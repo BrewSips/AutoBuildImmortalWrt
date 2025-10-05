@@ -79,13 +79,12 @@ if echo "$PACKAGES" | grep -q "luci-app-openclash"; then
     echo "✅ 已选择 luci-app-openclash，添加 openclash core"
     mkdir -p files/etc/openclash/core
     # Download clash_meta
-    META_URL="https://github.com/vernesong/OpenClash/raw/refs/heads/core/master/smart/clash-linux-amd64-v2.tar.gz"
+    META_URL="https://github.com/vernesong/OpenClash/raw/refs/heads/core/master/meta/clash-linux-amd64-v2.tar.gz"
     wget -qO- $META_URL | tar xOvz > files/etc/openclash/core/clash_meta
     chmod +x files/etc/openclash/core/clash_meta
     # Download Country GeoSite and Model
     wget -q https://raw.githubusercontent.com/alecthw/mmdb_china_ip_list/release/lite/Country.mmdb -O files/etc/openclash/Country.mmdb
     wget -q https://github.com/v2fly/domain-list-community/releases/latest/download/dlc.dat -O files/etc/openclash/GeoSite.dat
-    wget -q https://github.com/vernesong/mihomo/releases/download/LightGBM-Model/Model.bin -O files/etc/openclash/Model.bin
 else
     echo "⚪️ 未选择 luci-app-openclash"
 fi
