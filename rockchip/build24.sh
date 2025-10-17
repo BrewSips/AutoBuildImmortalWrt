@@ -60,9 +60,9 @@ PACKAGES="$PACKAGES luci-theme-argon"
 PACKAGES="$PACKAGES luci-app-argon-config"
 PACKAGES="$PACKAGES luci-i18n-argon-config-zh-cn"
 PACKAGES="$PACKAGES luci-i18n-ttyd-zh-cn"
-PACKAGES="$PACKAGES luci-i18n-passwall-zh-cn"
+#PACKAGES="$PACKAGES luci-i18n-passwall-zh-cn"
 PACKAGES="$PACKAGES luci-app-openclash"
-PACKAGES="$PACKAGES luci-i18n-homeproxy-zh-cn"
+#PACKAGES="$PACKAGES luci-i18n-homeproxy-zh-cn"
 # 判断是否需要编译 Docker 插件
 if [ "$INCLUDE_DOCKER" = "yes" ]; then
     PACKAGES="$PACKAGES luci-i18n-dockerman-zh-cn"
@@ -85,12 +85,13 @@ if echo "$PACKAGES" | grep -q "luci-app-openclash"; then
     echo "✅ 已选择 luci-app-openclash，添加 openclash core"
     mkdir -p files/etc/openclash/core
     # Download clash_meta
-    META_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-arm64.tar.gz"
+    META_URL="https://github.com/vernesong/OpenClash/raw/refs/heads/core/master/smart/clash-linux-arm64.tar.gz"
     wget -qO- $META_URL | tar xOvz > files/etc/openclash/core/clash_meta
     chmod +x files/etc/openclash/core/clash_meta
-    # Download GeoIP and GeoSite
-    wget -q https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat -O files/etc/openclash/GeoIP.dat
-    wget -q https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat -O files/etc/openclash/GeoSite.dat
+    # Download Country GeoSite and Model
+    wget -q https://raw.githubusercontent.com/alecthw/mmdb_china_ip_list/release/lite/Country.mmdb -O files/etc/openclash/Country.mmdb
+    wget -q https://github.com/v2fly/domain-list-community/releases/latest/download/dlc.dat -O files/etc/openclash/GeoSite.dat
+    wget -q https://github.com/vernesong/mihomo/releases/download/LightGBM-Model/Model-large.bin -O files/etc/openclash/Model.bin
 else
     echo "⚪️ 未选择 luci-app-openclash"
 fi
