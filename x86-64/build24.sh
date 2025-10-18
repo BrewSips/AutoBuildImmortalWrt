@@ -79,7 +79,7 @@ if echo "$PACKAGES" | grep -q "luci-app-openclash"; then
     echo "✅ 已选择 luci-app-openclash，添加 openclash core"
     mkdir -p files/etc/openclash/core
     # Download clash_meta
-    META_URL="https://github.com/vernesong/OpenClash/raw/refs/heads/core/master/smart/clash-linux-amd64-v1.tar.gz"
+    META_URL="https://github.com/vernesong/OpenClash/raw/refs/heads/core/master/smart/clash-linux-amd64-v2.tar.gz"
     wget -qO- $META_URL | tar xOvz > files/etc/openclash/core/clash_meta
     chmod +x files/etc/openclash/core/clash_meta
     # Download Country GeoSite and Model
