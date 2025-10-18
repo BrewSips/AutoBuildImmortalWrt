@@ -91,7 +91,7 @@ if echo "$PACKAGES" | grep -q "luci-app-openclash"; then
     # Download Country GeoSite and Model
     wget -q https://raw.githubusercontent.com/alecthw/mmdb_china_ip_list/release/lite/Country.mmdb -O files/etc/openclash/Country.mmdb
     wget -q https://github.com/v2fly/domain-list-community/releases/latest/download/dlc.dat -O files/etc/openclash/GeoSite.dat
-    wget -q https://github.com/vernesong/mihomo/releases/download/LightGBM-Model/Model-large.bin -O files/etc/openclash/Model.bin
+    wget -q https://github.com/vernesong/mihomo/releases/download/LightGBM-Model/Model.bin -O files/etc/openclash/Model.bin
 else
     echo "⚪️ 未选择 luci-app-openclash"
 fi
