@@ -88,10 +88,11 @@ if echo "$PACKAGES" | grep -q "luci-app-openclash"; then
     META_URL="https://github.com/vernesong/OpenClash/raw/refs/heads/core/master/smart/clash-linux-arm64.tar.gz"
     wget -qO- $META_URL | tar xOvz > files/etc/openclash/core/clash_meta
     chmod +x files/etc/openclash/core/clash_meta
-    # Download Country GeoSite and Model
-    wget -q https://raw.githubusercontent.com/alecthw/mmdb_china_ip_list/release/lite/Country.mmdb -O files/etc/openclash/Country.mmdb
-    wget -q https://github.com/v2fly/domain-list-community/releases/latest/download/dlc.dat -O files/etc/openclash/GeoSite.dat
+    # Download Model Country GeoSite ASN
     wget -q https://github.com/vernesong/mihomo/releases/download/LightGBM-Model/Model.bin -O files/etc/openclash/Model.bin
+    wget -q https://raw.githubusercontent.com/alecthw/mmdb_china_ip_list/release/lite/Country.mmdb -O files/etc/openclash/Country.mmdb
+    wget -q https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geosite.dat -O files/etc/openclash/GeoSite.dat
+    wget -q https://raw.githubusercontent.com/xishang0128/geoip/release/GeoLite2-ASN.mmdb -O files/etc/openclash/ASN.mmdb
 else
     echo "⚪️ 未选择 luci-app-openclash"
 fi
